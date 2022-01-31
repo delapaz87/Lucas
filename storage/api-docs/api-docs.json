@@ -1,0 +1,2237 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "LucaPOS API",
+        "contact": {
+            "email": "developers@tulivery.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Seguridad"
+                ],
+                "summary": "Inciar sesión",
+                "operationId": "c64fdb270498e81061530febf0dec4be",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login exitoso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "code",
+                                        "message",
+                                        "data"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No Autorizado"
+                    }
+                }
+            }
+        },
+        "/api/forgotpassword": {
+            "post": {
+                "tags": [
+                    "Seguridad"
+                ],
+                "summary": "Recuperar contraseña",
+                "operationId": "54040628603a404c82af33ee08c98722",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Se ha enviado el código de verificación",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "code",
+                                        "message",
+                                        "data"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "No se ha enviado el código de verificación"
+                    }
+                }
+            }
+        },
+        "/api/recoverpasswordwithemail": {
+            "post": {
+                "tags": [
+                    "Seguridad"
+                ],
+                "summary": "Recuperar contraseña con correo electrónico",
+                "operationId": "ccbc574e57e7482531e8db11e1670706",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Se actualizó la contraseña",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "code",
+                                        "message",
+                                        "data"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "No se pudo actualizar"
+                    },
+                    "401": {
+                        "description": "Usuario no registrado en Tulivery Tienda"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/changepasswordwithemail": {
+            "post": {
+                "tags": [
+                    "Seguridad"
+                ],
+                "summary": "Cambiar contraseña con correo electrónico",
+                "operationId": "ffb75465dd3d72eec542d8d3a2e3dcfe",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Se actualizó la contraseña",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "code",
+                                        "message",
+                                        "data"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "No se pudo actualizar"
+                    },
+                    "401": {
+                        "description": "Usuario no registrado  o no tiene tiendas asignada en Tulivery Tienda"
+                    }
+                }
+            }
+        },
+        "/api/registercompany": {
+            "post": {
+                "tags": [
+                    "Registrar"
+                ],
+                "summary": "Registrar Comercio y Usuario",
+                "operationId": "0df3e9b4c9b64569ac0cd3ba27dcd031",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name, last_name, phone, store_name, email, password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "last_name": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "$ref": "#/components/schemas/Phone"
+                                    },
+                                    "store_name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Registrado con exito."
+                    },
+                    "401": {
+                        "description": "El usuario con el correo proporcionado ya tiene una comercio registrado o campos incompletos."
+                    },
+                    "500": {
+                        "description": "Excepcion no controlada."
+                    }
+                }
+            }
+        },
+        "/api/getuserbyemail": {
+            "get": {
+                "tags": [
+                    "Extras"
+                ],
+                "summary": "Comprobar usuario registrado por Email",
+                "operationId": "d35c5a52b645df6daf9540c0b7795a47",
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario encontrado"
+                    },
+                    "201": {
+                        "description": "Usuario registrado pero no verificado."
+                    },
+                    "206": {
+                        "description": "No se encontro usuario registrado."
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                }
+            }
+        },
+        "/api/getusercompanybyemail": {
+            "get": {
+                "tags": [
+                    "Extras"
+                ],
+                "summary": "Comprobar si el usuario cuenta con comercio registrado",
+                "operationId": "2ca041ee53c8d19b69ed8fcc8d1fb3b9",
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "El usuario puede registrar un comercio."
+                    },
+                    "201": {
+                        "description": "Usuario registrado pero no verificado."
+                    },
+                    "401": {
+                        "description": "Estimado Juan usted ya tiene un comercio con el correo xxx@xxx.com. Le recomendamos usar otro correo para un nuevo comercio."
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                }
+            }
+        },
+        "/api/generatecodeformail": {
+            "post": {
+                "tags": [
+                    "Seguridad"
+                ],
+                "summary": "Generar Codigo OTP con Email",
+                "operationId": "a07e1493000d327f721bfa2554c1a5ce",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Se ha enviado el codigo de Verificacion"
+                    },
+                    "401": {
+                        "description": "No se ha enviado el código de verificación"
+                    }
+                }
+            }
+        },
+        "/api/validatecode": {
+            "post": {
+                "tags": [
+                    "Seguridad"
+                ],
+                "summary": "Validar código OTP",
+                "operationId": "70356f06d9b68eea6b41a528c4bca9d7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "code",
+                                    "token"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "token": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OTP validado correctamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "code",
+                                        "message",
+                                        "data"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "OTP no validado"
+                    }
+                }
+            }
+        },
+        "/api/ui/typedocument": {
+            "get": {
+                "tags": [
+                    "Extras"
+                ],
+                "summary": "Tipos de documentos",
+                "operationId": "a2ec24e9130059c184bbfe1d2ea372ab",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Error."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/ui/typepaymentaccepted": {
+            "get": {
+                "tags": [
+                    "Extras"
+                ],
+                "summary": "Metodos de Pagos",
+                "operationId": "77fdc63a77718f95d09adaa8a95c6976",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Error."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/ui/typeaddress": {
+            "get": {
+                "tags": [
+                    "Extras"
+                ],
+                "summary": "Tipos de Direccion",
+                "operationId": "da7ec1fd632e6570f48e344d3ce647a6",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Error."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/ui/cities": {
+            "get": {
+                "tags": [
+                    "Localización"
+                ],
+                "summary": "Ciudad",
+                "operationId": "c3f4549423a9f1d62579001674d3ebca",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "404": {
+                        "description": "No existe de imagen a subir"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/ui/provinces/{city_id}": {
+            "get": {
+                "tags": [
+                    "Localización"
+                ],
+                "summary": "Provinica",
+                "operationId": "732459dfb919ff3dedd78e31e0bb3661",
+                "parameters": [
+                    {
+                        "name": "city_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "404": {
+                        "description": "No existe de imagen a subir"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/ui/districts/{province_id}": {
+            "get": {
+                "tags": [
+                    "Localización"
+                ],
+                "summary": "Distrito",
+                "operationId": "948d636c6c0aa655109920078e63b8d2",
+                "parameters": [
+                    {
+                        "name": "province_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "404": {
+                        "description": "No existe de imagen a subir"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/category/getcategorybyid/{id}": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Traer categoria por id",
+                "operationId": "68983e9aad8e815bcad36e16feeb3088",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Buscar por código",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                }
+            }
+        },
+        "/api/category/getcategories": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Mostrar Categorias",
+                "operationId": "476666bc1dbb508f5fba3479012b5c37",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                }
+            }
+        },
+        "/api/category/newcategory": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Agregar Categorias",
+                "operationId": "25df3e28bdb38e05f068e3cb675dda32",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "integer"
+                                    },
+                                    "content_size": {
+                                        "type": "integer"
+                                    },
+                                    "delivery_way": {
+                                        "type": "integer"
+                                    },
+                                    "position": {
+                                        "type": "integer"
+                                    },
+                                    "visible": {
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                }
+            }
+        },
+        "/api/category/editcategory": {
+            "put": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Editar Categorias",
+                "operationId": "8f17902800622301817be61c5ca11848",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "integer"
+                                    },
+                                    "content_size": {
+                                        "type": "integer"
+                                    },
+                                    "delivery_way": {
+                                        "type": "integer"
+                                    },
+                                    "position": {
+                                        "type": "integer"
+                                    },
+                                    "visible": {
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                }
+            }
+        },
+        "/api/clients/company/{company_id}/id/{client_id}": {
+            "get": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Mostrar Cliente",
+                "operationId": "1d038cf06b56f6daa13324f23247d563",
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "client_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/clients/company/{company_id}": {
+            "get": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Mostrar Clientes",
+                "operationId": "750fff8c00e4be332a3d13ecca91d4fb",
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Actualizar Cliente",
+                "operationId": "a67531f453776dce3bd0a9ef4494c25e",
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "statusCode",
+                                        "statusMessage",
+                                        "result",
+                                        "isSucess",
+                                        "id",
+                                        "size",
+                                        "date",
+                                        "error"
+                                    ],
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "integer"
+                                        },
+                                        "statusMessage": {
+                                            "type": "string"
+                                        },
+                                        "result": {
+                                            "$ref": "#/components/schemas/User"
+                                        },
+                                        "isSucess": {
+                                            "type": "boolean"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "size": {
+                                            "type": "integer"
+                                        },
+                                        "date": {
+                                            "type": "string"
+                                        },
+                                        "error": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Falta el llenado de campos requeridos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "statusCode",
+                                        "statusMessage",
+                                        "result",
+                                        "isSucess",
+                                        "id",
+                                        "size",
+                                        "date",
+                                        "error"
+                                    ],
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "integer"
+                                        },
+                                        "statusMessage": {
+                                            "type": "string"
+                                        },
+                                        "result": {
+                                            "$ref": "#/components/schemas/ErrorStatus"
+                                        },
+                                        "isSucess": {
+                                            "type": "boolean"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "size": {
+                                            "type": "integer"
+                                        },
+                                        "date": {
+                                            "type": "string"
+                                        },
+                                        "error": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error desconocido"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Nuevo Cliente",
+                "operationId": "f082978808a54e507df53b006d6cb241",
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "statusCode",
+                                        "statusMessage",
+                                        "result",
+                                        "isSucess",
+                                        "id",
+                                        "size",
+                                        "date",
+                                        "error"
+                                    ],
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "integer"
+                                        },
+                                        "statusMessage": {
+                                            "type": "string"
+                                        },
+                                        "result": {
+                                            "$ref": "#/components/schemas/User"
+                                        },
+                                        "isSucess": {
+                                            "type": "boolean"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "size": {
+                                            "type": "integer"
+                                        },
+                                        "date": {
+                                            "type": "string"
+                                        },
+                                        "error": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Falta el llenado de campos requeridos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "statusCode",
+                                        "statusMessage",
+                                        "result",
+                                        "isSucess",
+                                        "id",
+                                        "size",
+                                        "date",
+                                        "error"
+                                    ],
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "integer"
+                                        },
+                                        "statusMessage": {
+                                            "type": "string"
+                                        },
+                                        "result": {
+                                            "$ref": "#/components/schemas/ErrorStatus"
+                                        },
+                                        "isSucess": {
+                                            "type": "boolean"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "size": {
+                                            "type": "integer"
+                                        },
+                                        "date": {
+                                            "type": "string"
+                                        },
+                                        "error": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error desconocido"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/commerce/inscription": {
+            "get": {
+                "tags": [
+                    "Comercio"
+                ],
+                "summary": "Mostrar compañia inscrita",
+                "operationId": "65b4c67ef91b9a34f571710ab85150ad",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/commerce/company": {
+            "get": {
+                "tags": [
+                    "Comercio"
+                ],
+                "summary": "Mostrar compañia",
+                "operationId": "2d717565ba80570b8e21d6fba2b68519",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Comercio"
+                ],
+                "summary": "Actualizar compañia",
+                "operationId": "08af7b4cf09fa924e4b5e3da64c5f465",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Company"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/company/users": {
+            "get": {
+                "tags": [
+                    "Comercio by Usuario"
+                ],
+                "summary": "Mostrar usuarios by compañia",
+                "operationId": "8026c42940485a8e987fc8505ed788d0",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Comercio by Usuario"
+                ],
+                "summary": "Invitar usuario a compañia",
+                "operationId": "cc495d7e4b73b2d2d88711d9a492c310",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "first_name",
+                                    "last_name",
+                                    "email",
+                                    "cia_id",
+                                    "role"
+                                ],
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string"
+                                    },
+                                    "last_name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "cia_id": {
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/ui/upload": {
+            "post": {
+                "tags": [
+                    "Imagen"
+                ],
+                "summary": "Subir imagen codificada en base64",
+                "operationId": "e5c1897e1413f2608d8350d8f173c566",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "upload"
+                                ],
+                                "properties": {
+                                    "upload": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "404": {
+                        "description": "No existe de imagen a subir"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/product/getproducts": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Mostrar Productos",
+                "operationId": "06017859c99727c07a9371dfa98814d3",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                }
+            }
+        },
+        "/api/product/getproductbyid/{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Traer producto por id",
+                "operationId": "63f1113dd41cd62a23556a76acc509d6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Buscar por código",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                }
+            }
+        },
+        "/api/product/editproduct": {
+            "put": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Agregar Producto",
+                "operationId": "f567a961389db338eb6f28c656a59221",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "category": {
+                                        "type": "integer"
+                                    },
+                                    "brand": {
+                                        "type": "integer"
+                                    },
+                                    "price_formula": {
+                                        "type": "integer"
+                                    },
+                                    "price_variation": {
+                                        "type": "integer"
+                                    },
+                                    "sold_by": {
+                                        "type": "string"
+                                    },
+                                    "weight_inc": {
+                                        "type": "integer"
+                                    },
+                                    "model_graph": {
+                                        "type": "integer"
+                                    },
+                                    "shape_color": {
+                                        "type": "string"
+                                    },
+                                    "shape_graph": {
+                                        "type": "string"
+                                    },
+                                    "image_list": {
+                                        "type": "string"
+                                    },
+                                    "image_zoom": {
+                                        "type": "string"
+                                    },
+                                    "activate_stock": {
+                                        "type": "integer"
+                                    },
+                                    "size": {
+                                        "type": "integer"
+                                    },
+                                    "size_symbol": {
+                                        "type": "string"
+                                    },
+                                    "sku_ext": {
+                                        "type": "string"
+                                    },
+                                    "barcode": {
+                                        "type": "string"
+                                    },
+                                    "visible": {
+                                        "type": "integer"
+                                    },
+                                    "position": {
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                }
+            }
+        },
+        "/api/product/newproduct": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Agregar Producto",
+                "operationId": "34b06328d5266800f90f1f6cc2abf663",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "category": {
+                                        "type": "integer"
+                                    },
+                                    "brand": {
+                                        "type": "integer"
+                                    },
+                                    "price_formula": {
+                                        "type": "integer"
+                                    },
+                                    "price_variation": {
+                                        "type": "integer"
+                                    },
+                                    "sold_by": {
+                                        "type": "string"
+                                    },
+                                    "weight_inc": {
+                                        "type": "integer"
+                                    },
+                                    "model_graph": {
+                                        "type": "integer"
+                                    },
+                                    "shape_color": {
+                                        "type": "string"
+                                    },
+                                    "shape_graph": {
+                                        "type": "string"
+                                    },
+                                    "image_list": {
+                                        "type": "string"
+                                    },
+                                    "image_zoom": {
+                                        "type": "string"
+                                    },
+                                    "activate_stock": {
+                                        "type": "integer"
+                                    },
+                                    "size": {
+                                        "type": "integer"
+                                    },
+                                    "size_symbol": {
+                                        "type": "string"
+                                    },
+                                    "sku_ext": {
+                                        "type": "string"
+                                    },
+                                    "barcode": {
+                                        "type": "string"
+                                    },
+                                    "visible": {
+                                        "type": "integer"
+                                    },
+                                    "position": {
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                }
+            }
+        },
+        "/api/stores": {
+            "get": {
+                "tags": [
+                    "Tienda"
+                ],
+                "summary": "Mostrar tiendas",
+                "operationId": "aac4c514c505fcc37f15727a913b6ce1",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Tienda"
+                ],
+                "summary": "Actualizar tienda",
+                "operationId": "5056a88bbf1630234733e77b4a600b76",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Store"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Tienda"
+                ],
+                "summary": "Nueva tiendas",
+                "operationId": "01bb59416462a8765fd1a599c958e491",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Store"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/stores/hours": {
+            "put": {
+                "tags": [
+                    "Tienda"
+                ],
+                "summary": "Actualizar horario de tiendas",
+                "operationId": "e7f13e92a6189a1e1c8614800a0aadcf",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/StoreHours"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/stores/assign": {
+            "post": {
+                "tags": [
+                    "Tienda"
+                ],
+                "summary": "Asignar Tienda",
+                "operationId": "14225573dc775102b62ab5c3d5f8cd37",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "cia_id"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "string"
+                                    },
+                                    "cia_id": {
+                                        "type": "string"
+                                    },
+                                    "stores": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/StoreAssign"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/stores/coverage/{cia_id}": {
+            "get": {
+                "tags": [
+                    "Tienda"
+                ],
+                "summary": "Mostrar Cobertura",
+                "operationId": "e4a002351b4be4fb92178852fd5fc8f4",
+                "parameters": [
+                    {
+                        "name": "cia_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/ui/tag": {
+            "get": {
+                "tags": [
+                    "Etiquetas"
+                ],
+                "summary": "Mostrar Etiquetas",
+                "operationId": "ab9a01305df363d59ca9ad7281e215b7",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Error."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Etiquetas"
+                ],
+                "summary": "Añadir Etiquetas",
+                "operationId": "036142bc9954c6f6069ff400c2bc2b95",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "tag"
+                                ],
+                                "properties": {
+                                    "tag": {
+                                        "type": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Error."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Mostrar usuarios",
+                "operationId": "6d5b72038ed4abf362868c76845f5d14",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "400": {
+                        "description": "Error no controlado."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/changepassword": {
+            "post": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Cambiar la contraseña",
+                "operationId": "d2a6cecf3f93b163a99cb4bcd71cf525",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Se actualizó la contraseña",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "statusCode",
+                                        "statusMessage",
+                                        "result",
+                                        "isSucess",
+                                        "id",
+                                        "size",
+                                        "date",
+                                        "error"
+                                    ],
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "integer"
+                                        },
+                                        "statusMessage": {
+                                            "type": "string"
+                                        },
+                                        "result": {
+                                            "$ref": "#/components/schemas/ErrorStatus"
+                                        },
+                                        "isSucess": {
+                                            "type": "boolean"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "size": {
+                                            "type": "integer"
+                                        },
+                                        "date": {
+                                            "type": "string"
+                                        },
+                                        "error": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "No se pudo actualizar la contraseña"
+                    },
+                    "401": {
+                        "description": "Error no controlado"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Company": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "legal_name": {
+                        "type": "string"
+                    },
+                    "legal_document": {
+                        "type": "string"
+                    },
+                    "legal_number": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "website": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "company_type": {
+                        "type": "string"
+                    },
+                    "payment_accepted": {
+                        "type": "string"
+                    },
+                    "qr_account": {
+                        "type": "string"
+                    },
+                    "qr_wallet": {
+                        "type": "string"
+                    },
+                    "qr_phone": {
+                        "type": "string"
+                    },
+                    "activate_webstore": {
+                        "type": "integer"
+                    },
+                    "web_template": {
+                        "type": "integer"
+                    },
+                    "banner_web": {
+                        "type": "string"
+                    },
+                    "banner_app": {
+                        "type": "string"
+                    },
+                    "activate_stock": {
+                        "type": "integer"
+                    },
+                    "visible_zero_stock": {
+                        "type": "integer"
+                    },
+                    "activate_delivery": {
+                        "type": "integer"
+                    },
+                    "activate_moturider": {
+                        "type": "integer"
+                    },
+                    "ranking_service": {
+                        "type": "string"
+                    },
+                    "ranking_delivery": {
+                        "type": "string"
+                    },
+                    "ranking_avg": {
+                        "type": "string"
+                    },
+                    "order_max": {
+                        "type": "string"
+                    },
+                    "salesman_code": {
+                        "type": "string"
+                    },
+                    "observations": {
+                        "type": "string"
+                    },
+                    "sac_email": {
+                        "type": "string"
+                    },
+                    "sac_phone": {
+                        "type": "string"
+                    },
+                    "company_delivery": {
+                        "$ref": "#/components/schemas/CompanyDelivery"
+                    },
+                    "company_tag": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CompanyDelivery": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "cia_id": {
+                        "type": "string"
+                    },
+                    "auto_delivery": {
+                        "type": "integer"
+                    },
+                    "delivery_way": {
+                        "type": "integer"
+                    },
+                    "delivery_map": {
+                        "type": "integer"
+                    },
+                    "delivery_min": {
+                        "type": "string"
+                    },
+                    "rate_type": {
+                        "type": "integer"
+                    },
+                    "rate_fix": {
+                        "type": "string"
+                    },
+                    "rate_ruler_km": {
+                        "type": "string"
+                    },
+                    "rate_var_km": {
+                        "type": "string"
+                    },
+                    "rate_ruler_value": {
+                        "type": "string"
+                    },
+                    "rate_var_value": {
+                        "type": "string"
+                    },
+                    "rate_outcity_do": {
+                        "type": "boolean"
+                    },
+                    "rate_outcity_text": {
+                        "type": "string"
+                    },
+                    "delivery_avg": {
+                        "type": "string"
+                    },
+                    "preparation_avg": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Store": {
+                "required": [
+                    "title",
+                    "phone",
+                    "street_name",
+                    "street_number",
+                    "district",
+                    "province",
+                    "city",
+                    "latitude",
+                    "longitude"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "cia_id": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "$ref": "#/components/schemas/Phone"
+                    },
+                    "street_name": {
+                        "type": "string"
+                    },
+                    "street_number": {
+                        "type": "string"
+                    },
+                    "reference": {
+                        "type": "string"
+                    },
+                    "district": {
+                        "type": "string"
+                    },
+                    "province": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "latitude": {
+                        "type": "string"
+                    },
+                    "longitude": {
+                        "type": "string"
+                    },
+                    "store_hours": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StoreHours"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "StoreHours": {
+                "required": [
+                    "start_time",
+                    "end_time",
+                    "weekday"
+                ],
+                "properties": {
+                    "start_time": {
+                        "type": "date"
+                    },
+                    "end_time": {
+                        "type": "date"
+                    },
+                    "weekday": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "required": [
+                    "first_name",
+                    "last_name",
+                    "email",
+                    "phone"
+                ],
+                "properties": {
+                    "first_name": {
+                        "description": "Nombre",
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "description": "Apellidos",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "Correo electronico",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "$ref": "#/components/schemas/Phone"
+                    }
+                },
+                "type": "object"
+            },
+            "Phone": {
+                "required": [
+                    "e164Number"
+                ],
+                "properties": {
+                    "number": {
+                        "description": "982217786",
+                        "type": "string"
+                    },
+                    "internationalNumber": {
+                        "description": "+51 982 217 786",
+                        "type": "string"
+                    },
+                    "nationalNumber": {
+                        "description": "982 217 786",
+                        "type": "string"
+                    },
+                    "e164Number": {
+                        "description": "+51982217786",
+                        "type": "string"
+                    },
+                    "countryCode": {
+                        "description": "PE",
+                        "type": "string"
+                    },
+                    "dialCode": {
+                        "description": "+51",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ErrorStatus": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "StoreAssign": {
+                "required": [
+                    "chkStore",
+                    "store_id"
+                ],
+                "properties": {
+                    "chkStore": {
+                        "type": "boolean"
+                    },
+                    "store_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "apiAuth": {
+                "type": "http",
+                "description": "Inicie sesión con correo electrónico y contraseña para obtener el token de autenticación",
+                "name": "Basado en token: bearer",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
